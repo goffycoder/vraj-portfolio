@@ -9,12 +9,10 @@ import {
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 
-
 type Skill = {
   name: string;
   icon: React.ReactElement; 
 };
-
 
 type MarqueeRowProps = {
   items: Skill[]; 
@@ -22,7 +20,6 @@ type MarqueeRowProps = {
   speed?: number;
 };
 
-// --- FIX 3: Apply the 'Skill[]' type to our data array ---
 const skillsData: Skill[] = [
   { name: "Python", icon: <SiPython /> },
   { name: "JavaScript", icon: <SiJavascript /> },
@@ -54,21 +51,19 @@ const skillsData: Skill[] = [
   { name: "CSS3", icon: <SiCss3 /> },
 ];
 
-// Duplicate data for smooth loop - THIS IS STILL NEEDED for the -50% animation
 const doubled: Skill[] = [...skillsData, ...skillsData];
 
 export const Skills = () => {
   return (
-    <div className="w-full py-16 bg-background">
-      <div className="container max-w-5xl mx-auto px-4 mb-12">
-        <h2 className="text-center text-3xl font-bold tracking-tight text-primary">
+    // FIX: Removed "bg-background" and "py-16" to stop the banding issue
+    <div className="w-full">
+      <div className="container max-w-5xl mx-auto px-4 mb-8 text-center">
+        <h2 className="text-3xl font-bold tracking-tight text-primary">
           Technical Skills
         </h2>
       </div>
 
-      {/* --- MODIFIED: Removed the 'space-y-8' wrapper and the second row --- */}
       <MarqueeRow items={doubled} reverse={false} speed={40} />
-      
     </div>
   );
 };
@@ -76,9 +71,10 @@ export const Skills = () => {
 const MarqueeRow = ({ items, reverse = false, speed = 40 }: MarqueeRowProps) => {
   return (
     <div className="relative overflow-hidden w-full group">
-      
-      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
-      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+      {/* These gradients fade to the 'background' variable. 
+          This is why the Skills section MUST be on the default background color */}
+      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 lg:w-32 bg-gradient-to-r from-background to-transparent z-10" />
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 lg:w-32 bg-gradient-to-l from-background to-transparent z-10" />
 
       <div
         className={`
@@ -92,11 +88,11 @@ const MarqueeRow = ({ items, reverse = false, speed = 40 }: MarqueeRowProps) => 
         }}
       >
         {items.map((skill: Skill, i: number) => (
-          <div key={i} className="flex flex-col items-center min-w-[110px]">
-            <div className="text-5xl text-muted-foreground hover:text-primary transition-colors">
+          <div key={i} className="flex flex-col items-center min-w-[80px] lg:min-w-[110px]">
+            <div className="text-4xl lg:text-5xl text-muted-foreground hover:text-primary transition-colors duration-300">
               {skill.icon}
             </div>
-            <span className="text-sm font-medium text-muted-foreground">
+            <span className="mt-2 text-sm font-medium text-muted-foreground">
               {skill.name}
             </span>
           </div>

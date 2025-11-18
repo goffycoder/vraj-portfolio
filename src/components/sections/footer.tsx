@@ -22,13 +22,12 @@ const socialLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="w-full py-8">
-      <div className="container max-w-5xl flex flex-col items-center justify-between gap-4 sm:flex-row">
-        
+    <footer className="w-full py-8 bg-background border-t mt-auto">
+      {/* FIX: mx-auto centers the footer content */}
+      <div className="container max-w-5xl mx-auto px-4 flex flex-col-reverse items-center justify-between gap-4 sm:flex-row">
         <p className="text-sm text-muted-foreground">
           &copy; {new Date().getFullYear()} Vraj Patel. All rights reserved.
         </p>
-        
         <div className="flex items-center space-x-2">
           {socialLinks.map((link) => (
             <Button
@@ -36,6 +35,7 @@ export const Footer = () => {
               variant="ghost"
               size="icon"
               asChild
+              className="hover:text-primary hover:bg-primary/10"
             >
               <a href={link.href} target="_blank" rel="noopener noreferrer">
                 <link.icon className="h-5 w-5" />
