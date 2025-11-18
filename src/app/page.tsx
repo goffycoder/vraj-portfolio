@@ -14,42 +14,42 @@ export default function Home() {
       <Header />
       
       <main className="flex flex-col">
-        {/* Hero Section */}
-        <section id="hero" className="w-full py-16">
+        {/* HERO: Default Background */}
+        <section id="hero" className="w-full">
           <Hero />
         </section>
 
-        {/* Skills Section - Full width with scrolling */}
-        <section id="skills" className="w-full">
+        {/* SKILLS: Default Background (Must be default for gradient to work!) */}
+        <section id="skills" className="w-full py-12">
           <Skills />
         </section>
 
-        {/* Projects Section */}
-        <section id="projects" className="w-full py-16">
+        {/* PROJECTS: Alternating Color (Secondary/20) */}
+        <section id="projects" className="w-full bg-secondary/20 py-12 border-y border-border/50">
           <Projects />
         </section>
 
-        {/* Experience Section */}
-        <section id="experience" className="w-full py-16">
+        {/* EXPERIENCE: Default Background */}
+        <section id="experience" className="w-full py-12">
           <Experience />
         </section>
 
-        {/* Education Section */}
-        <section id="education" className="w-full py-16">
+        {/* EDUCATION: Alternating Color */}
+        <section id="education" className="w-full bg-secondary/20 py-12 border-y border-border/50">
           <Education />
         </section>
 
-        {/* Certifications Section */}
-        <section id="certifications" className="w-full py-16">
+        {/* CERTIFICATIONS: Default Background */}
+        <section id="certifications" className="w-full py-12">
           <Certifications />
         </section>
 
-        {/* Contact Section */}
-        <section id="contact" className="w-full py-16">
+        {/* CONTACT: Alternating Color */}
+        <section id="contact" className="w-full bg-secondary/20 py-12 border-t border-border/50">
           <Contact />
         </section>
       </main>
-    <Footer />
+      <Footer />
     </div>
   );
 }

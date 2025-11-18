@@ -152,3 +152,9 @@
     line-height: 1.7;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+  /* This prevents the sticky header from covering section titles */
+  scroll-padding-top: 5rem; 
+}
