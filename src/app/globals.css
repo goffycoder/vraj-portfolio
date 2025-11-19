@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -78,33 +77,6 @@
   --sidebar-ring: oklch(0.707 0.022 261.325);
 }
 
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes marquee-reverse {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.animate-marquee {
-  animation: marquee linear infinite;
-}
-
-.animate-marquee-reverse {
-  animation: marquee-reverse linear infinite;
-}
-
-
 .dark {
   --background: oklch(0.13 0.028 261.692);
   --foreground: oklch(0.985 0.002 247.839);
@@ -141,8 +113,9 @@
 
 @layer base {
   html {
-  scroll-behavior: smooth;
-    }
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* Fixes section titles being hidden */
+  }
   * {
     @apply border-border outline-ring/50;
   }
@@ -153,8 +126,23 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
-  /* This prevents the sticky header from covering section titles */
-  scroll-padding-top: 5rem; 
+/* --- ANIMATION KEYFRAMES --- */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee {
+  animation: marquee linear infinite;
+  width: max-content; /* Ensures content doesn't wrap */
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse linear infinite;
+  width: max-content;
 }
