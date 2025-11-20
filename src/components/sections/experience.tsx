@@ -15,7 +15,7 @@ const experienceData = [
     date: "Feb 2025 – May 2025",
     // UPDATED: .jpeg extensions
     logo: "/flits-logo.jpeg", 
-    projectImage: "/flits-architecture.jpeg",
+    projectImage: "/flits-architecture.png",
     imageCaption: "Real-time Options Analytics Engine Architecture",
     description: [
       "Built real-time options analytics engine processing NSE/BSE tick data, implementing asyncio WebSocket client with 40% reduction in monitoring overhead.",
